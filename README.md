@@ -14,3 +14,5 @@
 ## 어려운점
 * random number를 받아오는 과정
 * 이벤트 위임할 때 자식 노드를 식별하는 과정 -> matches로 해결
+## Deploy
+https://gyunheee.github.io/Shooting-Game/
