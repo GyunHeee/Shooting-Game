@@ -5,11 +5,16 @@ const vertical = document.querySelector('.vertical');
 const target = document.querySelector('.target');
 const tag = document.querySelector('.tag');
 const body = document.querySelector('body');
+const score = document.querySelector('.score');
 
 const bodyRect = body.getBoundingClientRect();
+const scoreRect = score.getBoundingClientRect();
 
 const CARROT_COUNT = 10;
 const CARROT_SIZE = 48;
+
+let count = 0;
+let gameScore = CARROT_COUNT;
 
 function initGame() {
     addCarrot(CARROT_COUNT);
@@ -17,7 +22,7 @@ function initGame() {
 
 function addCarrot(count) {
     const x1 = 0;
-    const y1 = 0;
+    const y1 = scoreRect.height;
 
     const x2 = bodyRect.width - CARROT_SIZE;
     const y2 = bodyRect.height - CARROT_SIZE;
@@ -44,19 +49,26 @@ document.addEventListener('mousemove', (event) => {
     const x = event.clientX;
     const y = event.clientY;
 
-    horozontal.style.transform = `translateY(${y}px)`;
+    horozontal.style.transform = `translateY(${y - 32}px)`;
     vertical.style.transform = `translateX(${x}px)`;
 
-    target.style.transform = `translate(${x-60}px,${y-60}px)`;
+    target.style.transform = `translate(${x-60}px,${y-60 - 32}px)`;
 
-    tag.style.transform = `translate(${x+20}px, ${y+20}px)`;
+    tag.style.transform = `translate(${x+20}px, ${y+20 - 32}px)`;
     tag.innerHTML = `${x}, ${y}`;
 });
+
+function showScore(count) {
+    score.innerHTML = `score: ${count}`;
+}
 
 body.addEventListener('click', (event) => {
     const target = event.target;
     if (target.matches('.carrot')) {
         target.remove();
+        ++count;
+        showScore(CARROT_COUNT - count);
     }
 });
 initGame();
+showScore(CARROT_COUNT);
