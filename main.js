@@ -18,6 +18,7 @@ let gameScore = CARROT_COUNT;
 
 function initGame() {
     addCarrot(CARROT_COUNT);
+    showScore(count);
 }
 
 function addCarrot(count) {
@@ -67,8 +68,8 @@ body.addEventListener('click', (event) => {
     if (target.matches('.carrot')) {
         target.remove();
         ++count;
-        showScore(CARROT_COUNT - count);
+        showScore(count);
     }
 });
+
 initGame();
-showScore(CARROT_COUNT);
