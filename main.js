@@ -9,18 +9,35 @@ const body = document.querySelector('body');
 const bodyRect = body.getBoundingClientRect();
 
 const CARROT_COUNT = 10;
+const CARROT_SIZE = 48;
 
 function initGame() {
     addCarrot(CARROT_COUNT);
 }
 
 function addCarrot(count) {
+    const x1 = 0;
+    const y1 = 0;
+
+    const x2 = bodyRect.width - CARROT_SIZE;
+    const y2 = bodyRect.height - CARROT_SIZE;
+
     for (let i = 0; i < count; i++) {
         const carrot = document.createElement('img');
         carrot.setAttribute('src', './img/carrot.png');
         carrot.setAttribute('class', 'carrot');
+        carrot.style.position = 'absolute';
+        const x = randomNumber(x1, x2);
+        const y = randomNumber(y1, y2);
+        carrot.style.left = `${x}px`;
+        carrot.style.top = `${y}px`;
+
         body.appendChild(carrot);
     }
+}
+
+function randomNumber(min, max) {
+    return Math.random() * (max - min) + min;
 }
 
 document.addEventListener('mousemove', (event) => {
@@ -36,4 +53,10 @@ document.addEventListener('mousemove', (event) => {
     tag.innerHTML = `${x}, ${y}`;
 });
 
+body.addEventListener('click', (event) => {
+    const target = event.target;
+    if (target.matches('.carrot')) {
+        target.remove();
+    }
+});
 initGame();
