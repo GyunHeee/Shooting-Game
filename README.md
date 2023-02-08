@@ -5,6 +5,8 @@
 당근을 클릭하면 당근이 사라지며 점수가 증가합니다. 게임을 다시 시작하면 당근이 다시 랜덤으로 새롭게 배치됩니다. 
 ![ezgif com-video-to-gif](https://user-images.githubusercontent.com/92011224/217183116-3bc66677-fabe-422d-b6e3-60a7e208a0de.gif)
 ![image](https://user-images.githubusercontent.com/92011224/217183168-c12d2089-623d-4f79-9a7e-d574fba93af4.png)
+## 사용 기술
+HTML, CSS, JavaScript
 ## 배운점
 * javascript의 DOM요소를 동적으로 받아오는 과정
 * getBoundingClientRect()
